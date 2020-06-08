@@ -10,8 +10,6 @@ if(!file.exists("summarySCC_PM25.rds")) {
         unzip("c4p2.zip")
 }
 
-#loading the dataset into r using "fread" (it is supposed to be much faster than
-#"read.table" and you can limit the lines read into r)
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
