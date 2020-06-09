@@ -26,8 +26,11 @@ innerjoin<- inner_join(filtered,motorveh, by="SCC")
 emissions_motorveh <- innerjoin %>% group_by(fips, year) %>% summarise(sum=sum(Emissions))
 fips <- emissions_motorveh$fips
 png("plot6.png", width=480, height=480)
-g <- ggplot(emissions_motorvh, aes(year, sum, color=fips)) + geom_point()
-g + geom_smooth(method="lm", se=FALSE) + ggtitle("Motor Vehicle Emssions") + ylab("Motor Vehicle Emssions (tons)")
+g <- ggplot(emissions_motorveh, aes(year, sum, col=fips)) + geom_point()
+g + geom_smooth(method="lm", se=FALSE) + ggtitle("Motor Vehicle Emssions") + 
+        ylab("Motor Vehicle Emssions (tons)") +
+        theme(plot.title=element_text(hjust=0.5)) +
+        scale_colour_discrete(name="City", labels=c("LA", "Baltimore"))
 dev.off()
 
 

@@ -25,6 +25,8 @@ innerjoin <- inner_join(NEI,coalcomb, by="SCC")
 str(innerjoin)
 coalcomb_emissions <- innerjoin %>% group_by(year) %>% summarise(sum=sum(Emissions))
 png("plot4.png", width=480, height=480)
-qplot(year, sum, data=coalcomb_emissions, main="Coal Combustion Emissions") + geom_smooth(method="lm", se=FALSE) + ylab("Coal Combustion Emissions (tons)")
+qplot(year, sum, data=coalcomb_emissions, main="Coal Combustion Emissions") + 
+        geom_smooth(method="lm", se=FALSE) + 
+        ylab("Coal Combustion Emissions (tons)")
 dev.off()
 

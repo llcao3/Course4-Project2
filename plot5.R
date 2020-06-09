@@ -25,7 +25,10 @@ Baltimore <- NEI %>% filter(fips=="24510")
 innerjoin <- inner_join(Baltimore,motorveh, by="SCC")
 Baltimore_motorveh <- innerjoin %>% group_by(year) %>% summarise(sum=sum(Emissions))
 png("plot5.png", width=480, height=480)
-qplot(year, sum, data=Baltimore_motorveh, main="Baltimore Motor Vehicle Emissions") + geom_smooth(method="lm", se=FALSE) + ylab("Baltimore Motor Vehcile Emissions (tons)")
+qplot(year, sum, data=Baltimore_motorveh, main="Baltimore Motor Vehicle Emissions") +
+        geom_smooth(method="lm", se=FALSE) +
+        ylab("Baltimore Motor Vehcile Emissions (tons)") +
+        theme(plot.title=element_text(hjust=0.5))
 dev.off()
 
 
